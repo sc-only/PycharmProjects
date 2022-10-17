@@ -12,9 +12,9 @@ y_data = [2.0, 4.0, 6.0]
 w1 = torch.Tensor([1.0])
 w1.requires_grad = True
 
-# y=w*x
+# y=w1*(x^2)+w2*x+b
 def forward(x):
-    return x * w1
+    return x  * w1
 
 
 # 构建计算图
@@ -34,7 +34,7 @@ for epoch in range(100):
 
         w1.grad.data.zero_()  # 将权重中的梯度数据全部清零
     print("progress:", epoch, l.item())
-print('w1=', w1.item())
+print('w1=', w1.item(), )
 print('Predict (after training)', 4, forward(4).item())
 # plt.plot(w_list,mse_list)
 # plt.ylabel('Loss')
